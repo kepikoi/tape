@@ -84,6 +84,14 @@ $ tape -r ./my/local/module tests/**/*.js
 
 Please note that all modules loaded using the `-r` flag will run *before* any tests, regardless of when they are specified. For example, `tape -r a b -r c` will actually load `a` and `c` *before* loading `b`, since they are flagged as required modules.
 
+## Co-locating tests
+
+When co-locating tests with their modules adding the `-i` flag will allow to ignore any tests that reside inside /node_modules/ directories. This will allow tape processing tests recursively in the project:
+
+```sh
+$ tape **/*.spec.js -i
+```
+
 # things that go well with tape
 
 tape maintains a fairly minimal core. Additional features are usually added by using another module alongside tape.
