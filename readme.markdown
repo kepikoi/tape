@@ -8,6 +8,11 @@ tap-producing test harness for node and browsers
 
 ![tape](https://web.archive.org/web/20170612184731if_/http://substack.net/images/tape_drive.png)
 
+# namespace
+
+This package is a temporary fork of the [original tape module](https://www.npmjs.com/package/tape) to enable a co-locating workflow through the usage of the `-i` flag. 
+In case the [pull request](https://github.com/substack/tape/pull/451) is merged to the main repository, this package will be deprecated.
+
 # example
 
 ``` js
@@ -393,10 +398,6 @@ With [npm](https://npmjs.org) do:
 npm install tape --save-dev
 ```
 
-# Namespace
-
-This package is a temporary fork of the [original tape module](https://www.npmjs.com/package/tape) to enable the co-locating workflow through the `-i` flag. 
-In case the [pull request](https://github.com/substack/tape/pull/451) with the forked feature is merged to the main repository, this package wil lbe deprecated.
 
 # license
 
