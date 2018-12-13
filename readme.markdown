@@ -393,6 +393,11 @@ With [npm](https://npmjs.org) do:
 npm install tape --save-dev
 ```
 
+# Namespace
+
+This package is a temporary fork of the [original tape module](https://www.npmjs.com/package/tape) to enable the co-locating workflow through the `-i` flag. 
+In case the [pull request](https://github.com/substack/tape/pull/451) with the forked feature is merged to the main repository, this package wil lbe deprecated.
+
 # license
 
 MIT

@@ -1,5 +1,5 @@
 {
-    "name": "tape",
+    "name": "@kepi/tape-ignore",
     "version": "4.9.1",
     "description": "tap-producing test harness for node and browsers",
     "main": "index.js",
