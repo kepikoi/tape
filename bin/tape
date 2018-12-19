@@ -39,7 +39,7 @@ opts._.forEach(function (arg) {
         //ignore every file that resides inside a node_modules folder
         //Note: glob option "ignore" does not support regex so this might be the simplest solution
         files = files.filter(function (f) {
-            return !/\/node_modules\//.test(f);
+            return !/(^node_modules|.+\/node_modules\/).+$/.test(f);
         })
     }
 
