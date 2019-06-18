@@ -99,7 +99,7 @@ $ tape **/*.spec.js -i
 
 # things that go well with tape
 
-tape maintains a fairly minimal core. Additional features are usually added by using another module alongside tape.
+`tape` maintains a fairly minimal core. Additional features are usually added by using another module alongside `tape`.
 
 ## pretty reporters
 
@@ -135,20 +135,23 @@ of the modules of your choice!
 
 ## uncaught exceptions
 
-By default, uncaught exceptions in your tests will not be intercepted, and will cause tape to crash. If you find this behavior undesirable, use [tape-catch](https://github.com/michaelrhodes/tape-catch) to report any exceptions as TAP errors.
+By default, uncaught exceptions in your tests will not be intercepted, and will cause `tape` to crash. If you find this behavior undesirable, use [`tape-catch`](https://github.com/michaelrhodes/tape-catch) to report any exceptions as TAP errors.
 
 ## other
 
 - CoffeeScript support with https://www.npmjs.com/package/coffeetape
-- Promise support with https://www.npmjs.com/package/blue-tape
-- ES6 support with https://www.npmjs.com/package/babel-tape-runner
+- Promise support with https://www.npmjs.com/package/blue-tape or https://www.npmjs.com/package/tape-promise
+- ES6 support with https://www.npmjs.com/package/babel-tape-runner or https://www.npmjs.com/package/buble-tape-runner
+- Different test syntax with https://github.com/pguth/flip-tape (warning: mutates String.prototype)
+- Electron test runner with https://github.com/tundrax/electron-tap
+- Concurrency support with https://github.com/imsnif/mixed-tape
 
 # methods
 
-The assertion methods in tape are heavily influenced or copied from the methods
+The assertion methods in `tape` are heavily influenced or copied from the methods
 in [node-tap](https://github.com/isaacs/node-tap).
 
-```
+```js
 var test = require('tape')
 ```
 
@@ -162,22 +165,23 @@ Available `opts` options are:
 - opts.skip = true/false. See test.skip.
 - opts.timeout = 500. Set a timeout for the test, after which it will fail. See test.timeoutAfter.
 - opts.objectPrintDepth = 5. Configure max depth of expected / actual object printing. Environmental variable `NODE_TAPE_OBJECT_PRINT_DEPTH` can set the desired default depth for all tests; locally-set values will take precedence.
+- opts.todo = true/false. Test will be allowed to fail.
 
 If you forget to `t.plan()` out how many assertions you are going to run and you
 don't call `t.end()` explicitly, your test will hang.
 
-## test.skip(name, cb)
+## test.skip([name], [opts], cb)
 
 Generate a new test that will be skipped over.
 
 ## test.onFinish(fn)
 
-The onFinish hook will get invoked when ALL tape tests have finished
-right before tape is about to print the test summary.
+The onFinish hook will get invoked when ALL `tape` tests have finished
+right before `tape` is about to print the test summary.
 
 ## test.onFailure(fn)
 
-The onFailure hook will get invoked whenever any tape tests has failed.
+The onFailure hook will get invoked whenever any `tape` tests has failed.
 
 ## t.plan(n)
 
@@ -253,7 +257,7 @@ Assert that `actual` and `expected` do not have the same structure and nested va
 [node's deepEqual() algorithm](https://github.com/substack/node-deep-equal)
 with strict comparisons (`===`) on leaf nodes and an optional description of the assertion `msg`.
 
-Aliases: `t.notEquivalent()`, `t.notDeeply()`, `t.notSame()`,
+Aliases: `t.notDeepEquals`, `t.notEquivalent()`, `t.notDeeply()`, `t.notSame()`,
 `t.isNotDeepEqual()`, `t.isNotDeeply()`, `t.isNotEquivalent()`,
 `t.isInequivalent()`
 
@@ -302,11 +306,11 @@ By default the TAP output goes to `console.log()`. You can pipe the output to
 someplace else if you `htest.createStream().pipe()` to a destination stream on
 the first tick.
 
-## test.only(name, cb)
+## test.only([name], [opts], cb)
 
-Like `test(name, cb)` except if you use `.only` this is the only test case
-that will run for the entire process, all other test cases using tape will
-be ignored
+Like `test([name], [opts], cb)` except if you use `.only` this is the only test case
+that will run for the entire process, all other test cases using `tape` will
+be ignored.
 
 ## var stream = test.createStream(opts)
 
@@ -335,7 +339,7 @@ like a network connection or a file.
 
 Pass in test files to run as arguments:
 
-```
+```sh
 $ node tap.js test/x.js test/y.js
 TAP version 13
 # (anonymous)
@@ -376,7 +380,7 @@ process.argv.slice(2).forEach(function (file) {
 
 The output for this runner is:
 
-```
+```sh
 $ node object.js test/x.js test/y.js
 {"type":"test","name":"(anonymous)","id":0}
 {"id":0,"ok":false,"name":"should be equal","operator":"equal","actual":"beep","expected":"boop","error":{},"test":0,"type":"assert"}
@@ -394,7 +398,7 @@ $ node object.js test/x.js test/y.js
 
 With [npm](https://npmjs.org) do:
 
-```
+```sh
 npm install tape --save-dev
 ```
 
